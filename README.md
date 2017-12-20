@@ -24,6 +24,7 @@
     - [ ] viper
 - [x] Security
     - [x] secure http headers
+- [x] Log file
 - [ ] 測試
     - [ ] Unit test
     - [ ] API test
@@ -188,3 +189,27 @@ vendor下除了govendor fetch下來的packages外，app目錄下是所有的sour
 ## secure http header
 使用的是 https://github.com/unrolled/secure  
 請參照 [vendor/app/shared/secure/secure.go](vendor/app/shared/secure/secure.go)
+
+## logger
+
+下面的code完全從gin官網照抄
+```
+func main() {
+    // Disable Console Color, you don't need console color when writing the logs to file.
+    gin.DisableConsoleColor()
+
+    // Logging to a file.
+    f, _ := os.Create("gin.log")
+    gin.DefaultWriter = io.MultiWriter(f)
+
+    // Use the following code if you need to write the logs to file and console at the same time.
+    // gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
+
+    router := gin.Default()
+    router.GET("/ping", func(c *gin.Context) {
+        c.String(200, "pong")
+    })
+
+    r.Run(":8080")
+}
+```
