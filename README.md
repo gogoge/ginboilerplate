@@ -13,15 +13,17 @@
 - [x] 套件管理
     - [x] govendor
 - [ ] gin
-    - [ ] 基本server
-    - [ ] server file structure
+    - [x] 基本server
+    - [x] server file structure
+        - [x] import / export
     - [ ] DB操作
     - [ ] JWT
     - [ ] Cookie
 - [ ] 參數
     - [ ] go flag
     - [ ] viper
-- [ ] Security
+- [x] Security
+    - [x] secure http headers
 - [ ] 測試
     - [ ] Unit test
     - [ ] API test
@@ -54,8 +56,7 @@ WorkSpace會有三個資料夾`bin`, `pkg`與`src`
    |-----/pkg
    |-----/src
    |      |----/Project1
-   |      |       |-------/app
-   |      |       |-------/vendor    
+   |      |       |-------/vendor   
    |      |       |-------main.go
 ```
 
@@ -150,3 +151,32 @@ https://github.com/josephspurrier/gowebapp
 在Project Root有一個entry point `main.go`  
 其他都放在app目錄中，以import的方式匯入  
 
+為了讓程式中可以用
+
+```
+import app/shared/secure
+```
+的方式import其他go檔案  
+除了main.go之外的所有go檔，統一存放在Project/vendor/app下
+
+資料夾結構如下  
+```
+/$GOPATH
+   |-----/bin
+   |-----/pkg
+   |-----/src
+   |      |----/Project1
+   |      |       |-------/vendor   
+   |      |       |          |-----/app
+   |      |       |                  |-----/controller
+   |      |       |                  |-----/route
+   |      |       |                  |-----/model
+   |      |       |                  |-----/shared
+   |      |       |                  |        |-----/secure
+   |      |       |-------main.go
+```
+vendor下除了govendor fetch下來的packages外，app目錄下是所有的source codea
+
+## secure http header
+使用的是 https://github.com/unrolled/secure  
+請參照 [vendor/app/shared/secure/secure.go](vendor/app/shared/secure/secure.go)
