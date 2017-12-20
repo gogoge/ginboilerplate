@@ -36,7 +36,7 @@
 https://tour.golang.org/list  
 https://golang.org/doc/code.html#Organization  
 
-### 安裝
+### Golang安裝
 
 [MacOS安裝](doc/installation/macos.md)  
 
@@ -213,3 +213,25 @@ func main() {
     r.Run(":8080")
 }
 ```
+
+## HTTPS
+
+> reference the code below, to generate self-sign ssl key
+
+```
+mkdir -p certs
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
+    -subj '/C=TW/ST=Taiwan/L=Taipei/O=Wistron/OU=SWPC/CN=gogoge/' \
+    -x509 -days 365 -out certs/domain.crt
+```
+
+### Redirect HTTP to HTTPS
+https://github.com/gin-gonic/gin/issues/643#issuecomment-256637723
+
+原理是用`[go statement](https://golang.org/ref/spec#Go_statements)`  
+以concurrent的方式同時開HTTP及HTTPs兩台server  
+再設定HTTP Header的`SSLRedirect`把非HTTPS的request都redirect到HTTPS server  
+
+> 若 HTTP port 80, HTTPs port 443
+> 連80還是只能HTTP
+> 但用HTTP連443會自動轉HTTPs

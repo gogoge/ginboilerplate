@@ -6,11 +6,16 @@ import (
 )
 
 //Init
-func Init() gin.HandlerFunc {
+func Init(host string) gin.HandlerFunc {
 	secureMiddleware := secure.New(secure.Options{
 		FrameDeny: true,
 		ForceSTSHeader: true,
 		BrowserXssFilter: true,
+		// SSL
+		SSLRedirect: true,
+		SSLHost:     host,
+		// Dev mode
+		IsDevelopment: false,
 	})
 	secureFunc := func() gin.HandlerFunc {
 		return func(c *gin.Context) {
