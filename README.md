@@ -25,6 +25,7 @@
 - [x] Security
     - [x] secure http headers
 - [x] Log file
+- [x] Live Reload on Save
 - [ ] 測試
     - [ ] Unit test
     - [ ] API test
@@ -235,3 +236,26 @@ https://github.com/gin-gonic/gin/issues/643#issuecomment-256637723
 > 若 HTTP port 80, HTTPs port 443
 > 連80還是只能HTTP
 > 但用HTTP連443會自動轉HTTPs
+
+## Live Reload
+
+### 安裝Air (與Gin同作者)
+
+https://github.com/cosmtrek/air
+
+```
+curl -fLo $GOPATH/bin/air \
+    https://raw.githubusercontent.com/cosmtrek/air/master/bin/darwin/air
+chmod +x $GOPATH/bin/air
+```
+
+啟動server
+```
+air
+```
+
+#### other live reload pkg
+
+[fresh](https://github.com/pilu/fresh) air is inspire from fresh    
+[gin](https://github.com/codegangsta/gin)  
+[Live code reloading for Golang web projects in 19 lines](https://medium.com/@olebedev/live-code-reloading-for-golang-web-projects-in-19-lines-8b2e8777b1ea)
