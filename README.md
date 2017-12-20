@@ -142,3 +142,11 @@ go run main.go
 
 再以browser連到localhost:8080/ping，若有拿到pong代表server建立成功
 
+### 檔案結構
+
+參考下面這篇文章
+https://github.com/josephspurrier/gowebapp
+
+在Project Root有一個entry point `main.go`  
+其他都放在app目錄中，以import的方式匯入  
+
