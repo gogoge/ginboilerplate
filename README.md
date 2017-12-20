@@ -21,6 +21,7 @@
 - [ ] 參數
     - [ ] go flag
     - [ ] viper
+- [ ] Security
 - [ ] 測試
     - [ ] Unit test
     - [ ] API test
@@ -93,6 +94,13 @@ govendor fetch <套件URL>
 ```
 govendor sync
 ```
+
+### 設定gitignore
+
+```
+vendor/*/
+```
+
 ### Golang尋找套件的次序
 
 1. Project/vendor
@@ -100,4 +108,37 @@ govendor sync
 3. $GOPATH
 4. $GOROOT
 
+## Gin Server
+
+```
+govendor fetch github.com/gin-gonic/gin
+```
+
+新增main.go
+
+```
+package main
+
+import (
+  "github.com/gin-gonic/gin"
+)
+
+func main() {
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	r.Run() // listen and serve on 0.0.0.0:8080
+}
+```
+
+執行
+
+```
+go run main.go
+```
+
+再以browser連到localhost:8080/ping，若有拿到pong代表server建立成功
 
