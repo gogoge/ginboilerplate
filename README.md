@@ -1,5 +1,31 @@
 # 用Golang/Gin 實作API Server
 
+## 工作計劃
+
+- [x] 本機安裝Golang
+- [x] IDE設定
+    - [x] VS Code
+- [x] 基本語法略懂
+- [x] go tool基本指令
+    - [x] go get
+    - [x] go build
+    - [x] go install
+- [x] 套件管理
+    - [x] govendor
+- [ ] gin
+    - [ ] 基本server
+    - [ ] server file structure
+    - [ ] DB操作
+    - [ ] JWT
+    - [ ] Cookie
+- [ ] 參數
+    - [ ] go flag
+    - [ ] viper
+- [ ] 測試
+    - [ ] Unit test
+    - [ ] API test
+- [ ] Dockerize
+
 ## 前置準備  
 
 ### Golang語法  
