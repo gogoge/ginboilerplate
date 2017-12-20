@@ -151,13 +151,21 @@ https://github.com/josephspurrier/gowebapp
 在Project Root有一個entry point `main.go`  
 其他都放在app目錄中，以import的方式匯入  
 
-為了讓程式中可以用
+https://peter.bourgon.org/go-best-practices-2016/
+上文的Best Practice中提到
+
+> Always use fully-qualified import paths. Never use relative imports.
+
+為了讓程式中可以import子資料夾下的go檔，寫的時候必需以完整路徑，不建議用`./`  
+有些Project會把source code放到vendor下，但vendor的用途類似node_modules，應該只放3rd prarty的lib  
+不建議這樣放
+
 
 ```
-import app/shared/secure
+import app/shared/secure  // 不好
+import devpack.cc/ginboilerplate/app/shared/secure  //好
 ```
-的方式import其他go檔案  
-除了main.go之外的所有go檔，統一存放在Project/vendor/app下
+
 
 資料夾結構如下  
 ```
@@ -166,13 +174,13 @@ import app/shared/secure
    |-----/pkg
    |-----/src
    |      |----/Project1
+   |      |       |-----/app
+   |      |       |       |-----/controller
+   |      |       |       |-----/route
+   |      |       |       |-----/model
+   |      |       |       |-----/shared
+   |      |       |                |-----/secure
    |      |       |-------/vendor   
-   |      |       |          |-----/app
-   |      |       |                  |-----/controller
-   |      |       |                  |-----/route
-   |      |       |                  |-----/model
-   |      |       |                  |-----/shared
-   |      |       |                  |        |-----/secure
    |      |       |-------main.go
 ```
 vendor下除了govendor fetch下來的packages外，app目錄下是所有的source codea

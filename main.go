@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"app/shared/secure"
-	"app/route"
+	"devpack.cc/ginboilerplate/app/shared/secure"
+	"devpack.cc/ginboilerplate/app/route"
 )
 
 func main() {
