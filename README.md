@@ -19,6 +19,7 @@
     - [ ] DB操作
     - [ ] JWT
     - [ ] Cookie
+- [x] How to write a middleware
 - [ ] 參數
     - [ ] go flag
     - [ ] viper
@@ -259,3 +260,23 @@ air
 [fresh](https://github.com/pilu/fresh) air is inspire from fresh    
 [gin](https://github.com/codegangsta/gin)  
 [Live code reloading for Golang web projects in 19 lines](https://medium.com/@olebedev/live-code-reloading-for-golang-web-projects-in-19-lines-8b2e8777b1ea)
+
+## How to write a middleware
+
+
+```go
+func DummyMiddleware(c *gin.Context) {
+  fmt.Println("Im a dummy!")
+
+  // Pass on to the next-in-chain
+  c.Next()
+}
+
+func main() {
+  // Insert this middleware definition before any routes
+  api.Use(DummyMiddleware)
+  // ... more code
+}
+```
+Read more:  
+http://sosedoff.com/2014/12/21/gin-middleware.html
