@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"fmt"
+	// "fmt"
 	"github.com/dgrijalva/jwt-go"
 	"time"
 )
@@ -79,18 +79,17 @@ func Login(user string) (string, error){
 
 	token, err := Sign(group)
 
-	if err != nil {
-		fmt.Printf("%v", err)
-	} else {
-		// fmt.Printf("%v", token)
-	}
+	// if err != nil {
+	// 	fmt.Printf("%v", err)
+	// } else {
+	// 	// fmt.Printf("%v", token)
+	// }
 	return token, err
 }
 
 // Verify ...
 func Verify(signedToken string) (string, error){
 	tokenD, err := jwt.ParseWithClaims(signedToken, &MyCustomClaims{}, func(token *jwt.Token) (interface{}, error) {
-		fmt.Println(token)
 		return mySigningKey, nil
 	})
 
