@@ -30,16 +30,15 @@
     - [x] secure http headers
 - [x] Log file
 - [x] Live Reload on Save
+- [ ] Coding Style
+    - [ ] editorconfig
+    - [ ] gofomat
 - [ ] 測試
     - [ ] Unit test
     - [ ] API test
 - [ ] Dockerize
 
 ## 前置準備  
-
-### Golang語法  
-https://tour.golang.org/list  
-https://golang.org/doc/code.html#Organization  
 
 ### Golang安裝
 
@@ -295,3 +294,18 @@ https://godoc.org/github.com/dgrijalva/jwt-go#ex-NewWithClaims--CustomClaimsType
 ### Verify
 https://godoc.org/github.com/dgrijalva/jwt-go#ex-ParseWithClaims--CustomClaimsType
 
+
+
+---
+## References
+
+### Golang語法  
+https://tour.golang.org/list  
+https://golang.org/doc/code.html#Organization  
+https://golang.org/doc/effective_go.html#introduction  
+https://github.com/alco/gostart  
+https://gobyexample.com  
+https://golangbot.com  
+
+### awesome-go
+https://github.com/avelino/awesome-go  
