@@ -4,42 +4,27 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Dummy ...
+func Dummy(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "success",
+	})
+}
+
 //AuthInit ...
 func AuthInit(router *gin.Engine) {
-	auth := router.Group("/auth")
-	auth.GET("/login", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	auth.GET("/submit", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	auth.GET("/read", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	authRoute := router.Group("/auth")
+	authRoute.POST("/login", LoginHandler)
+	authRoute.GET("/submit", Dummy)
+	authRoute.GET("/read", Dummy)
 }
 
 //ArticleInit ...
 func ArticleInit(router *gin.Engine) {
-	auth := router.Group("/articles")
-	auth.GET("/read", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	auth.GET("/create", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	auth.GET("/delete", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	articleRoute := router.Group("/articles")
+	articleRoute.Use(AuthN)
+	articleRoute.Use(AuthZ)
+	articleRoute.GET("/read", Dummy)
+	articleRoute.GET("/create", Dummy)
+	articleRoute.GET("/delete", Dummy)
 }
