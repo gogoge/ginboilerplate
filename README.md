@@ -17,16 +17,19 @@
     - [x] server file structure
         - [x] import / export
     - [ ] DB操作
-    - [ ] JWT
+    - [x] JWT
         - [x] How to Sign
         - [x] How to Verify
-        - [ ] Use JWT to Auth
-    - [ ] Cookie
+        - [x] Use JWT to Auth
+    - [x] Cookie
+        - [x] Get Cookie by key name
+        - [x] Set Cookie
 - [x] How to write a middleware
 - [ ] 參數
     - [ ] go flag
     - [ ] viper
 - [x] Security
+    - [ ] Use Regex filter forbidden chars
     - [x] secure http headers
 - [x] Log file
 - [x] Live Reload on Save
@@ -295,6 +298,32 @@ https://godoc.org/github.com/dgrijalva/jwt-go#ex-NewWithClaims--CustomClaimsType
 https://godoc.org/github.com/dgrijalva/jwt-go#ex-ParseWithClaims--CustomClaimsType
 
 
+## Cookie
+
+### Get
+
+```
+func readCookie(c *gin.Context) {
+    return c.Cookie(<cookie key name>)
+}
+```
+https://godoc.org/github.com/gin-gonic/gin#Context.Cookie
+
+### Set
+
+```
+func setCookie(c *gin.Context) {
+    // name     string
+    // value    string
+    // maxAge   int
+    // path     string
+    // domain   string
+    // secure   bool
+    // httpOnly bool
+    return c.SetCookie(name, value, maxAgent, path, domain, secure, httpOnly)
+}
+```
+https://godoc.org/github.com/gin-gonic/gin#Context.SetCookie
 
 ---
 ## References
@@ -309,3 +338,6 @@ https://golangbot.com
 
 ### awesome-go
 https://github.com/avelino/awesome-go  
+
+## testing tool
+https://github.com/jakubroztocil/httpie
