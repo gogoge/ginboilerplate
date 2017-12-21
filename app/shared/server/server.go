@@ -3,9 +3,9 @@ package server
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"devpack.cc/ginboilerplate/app/shared/secure"
-	"devpack.cc/ginboilerplate/app/route"
-	"devpack.cc/ginboilerplate/configs"
+	"devpack.cc/webb_lu/ginboilerplate/app/shared/secure"
+	"devpack.cc/webb_lu/ginboilerplate/app/route"
+	"devpack.cc/webb_lu/ginboilerplate/configs"
 )
 
 // Run ...

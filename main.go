@@ -1,8 +1,8 @@
 package main
 
 import (
-	"devpack.cc/ginboilerplate/app/shared/server"
-	"devpack.cc/ginboilerplate/app/shared/logger"
+	"devpack.cc/webb_lu/ginboilerplate/app/shared/server"
+	"devpack.cc/webb_lu/ginboilerplate/app/shared/logger"
 )
 
 func main() {
