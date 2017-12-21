@@ -18,6 +18,9 @@
         - [x] import / export
     - [ ] DB操作
     - [ ] JWT
+        - [x] How to Sign
+        - [x] How to Verify
+        - [ ] Use JWT to Auth
     - [ ] Cookie
 - [x] How to write a middleware
 - [ ] 參數
@@ -280,3 +283,15 @@ func main() {
 ```
 Read more:  
 http://sosedoff.com/2014/12/21/gin-middleware.html
+
+## JWT
+
+因為我們需要在JWT寫入自定義的內容，所以使用`custom claims`  
+
+### Sign
+https://godoc.org/github.com/dgrijalva/jwt-go#ex-NewWithClaims--CustomClaimsType
+
+
+### Verify
+https://godoc.org/github.com/dgrijalva/jwt-go#ex-ParseWithClaims--CustomClaimsType
+
