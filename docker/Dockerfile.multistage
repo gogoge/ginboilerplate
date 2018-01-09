@@ -1,0 +1,25 @@
+# builder
+FROM golang:alpine AS build-env
+RUN apk add --update --no-cache git && \
+    rm -rf /tmp/* /var/cache/apk/* && \
+    go get -u github.com/kardianos/govendor && \
+    rm -rf /go/src/github.com/kardianos
+
+# build
+FROM ginboilerplate:builder AS build
+COPY --from=build-env /go /go
+COPY . /go/src/devpack.cc/webb_lu/ginboilerplate/
+RUN cd /go/src/devpack.cc/webb_lu/ginboilerplate && \
+    govendor sync && \
+    # ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
+    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main .
+
+# release
+FROM scratch
+WORKDIR /
+COPY --from=build /go/src/devpack.cc/webb_lu/ginboilerplate/certs /certs
+COPY --from=build /go/src/devpack.cc/webb_lu/ginboilerplate/main /
+# COPY --from=build /etc/timezone /etc/timezone
+ENV GIN_MODE release
+ENV TZ Asia/Taipei
+CMD ["/main"]

@@ -45,6 +45,7 @@
 
 ### Golang安裝
 
+[Ubuntu安裝](https://github.com/golang/go/wiki/Ubuntu)
 [MacOS安裝](doc/installation/macos.md)  
 
 
